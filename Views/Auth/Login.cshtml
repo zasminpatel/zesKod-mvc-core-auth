@@ -1,0 +1,43 @@
+﻿@model LoginModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout_Auth.cshtml";
+}
+<div class="container-fluid h-100 text-dark">
+    <div class="row justify-content-center align-items-center">
+        <h1>Login</h1>
+    </div>
+    <hr />
+    <div class="row justify-content-center align-items-center h-100">
+        <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
+            <form method="post" asp-action="Login" asp-controller="Auth" asp-route-returnUrl="@ViewBag.returnUrl" autocomplete="off">
+                <div class="form-group">
+                    <input type="text" asp-for="username" class="form-control" />
+                    <span class="text-danger" asp-validation-for="username"></span>
+                </div>
+                <div class="form-group">
+                    <input type="password" asp-for="password" class="form-control" />
+                    <span class="text-danger" asp-validation-for="password"></span>
+                </div>
+                <div class="form-group">
+                    <div class="form-check-inline">
+                        <label class="form-check-label">
+                            <input type="checkbox" asp-for="remember" class="form-check-input">Remember Me
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col pl-0"><button class="col-6 btn btn-secondary btn-sm float-left">Reset</button></div>
+                            <div class="col pr-0"><button class="col-6 btn btn-primary btn-sm float-right">Submit</button></div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Html.Partial("_ValidationScriptsPartial")
+}
